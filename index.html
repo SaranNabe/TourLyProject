@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touristist</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+    <script defer src="assets/js/main.js"></script>
+</head>
+
+<body id="body">
+
+    <div class="container">
+        <!-- Sidebar avec le formulaire -->
+        <div class="sidebar">
+
+            <div class="logo">
+                <img src="images/logo-Tourly-Optimus.png" alt="" class="logo-image">
+            </div>
+            <button class="view-sites-btn"><i class="fas fa-eye"></i> Voir les sites ajoutés</button>
+            <div class="sites-list"></div>
+            <div class="sidebar-form hidden">
+                <form>
+                    <div class="form__row">
+                       
+                        <input class="form_input form_input--nom fas fa-signature" type="text" placeholder="Nom du site" maxlength="35" />
+                    </div>
+                    <div class="form__row">
+                       
+                        <select class="form_input form_input--type">
+                            <option>Parcs</option>
+                            <option>Musée</option>
+                            <option>Plages</option>
+                            <option>Chutes</option>
+                        </select>
+                    </div>
+                    <!-- Champs Adresse et Note regroupés -->
+                    <div class="form__row">
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 1;">
+                                
+                                <input class="form_input form_input--Adresse fas fa-map-marker-alt" type="text" placeholder="Adresse du site" />
+                            </div>
+                            <div style="flex: 0.6;">
+                                <input type="number" min="1" max="5" class="form_input form_input--note fas fa-star" placeholder="Note /5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_form ">
+                        <div class="form__row form_row-description">
+                            
+                            <textarea class="form_input form_input--description fas fa-pencil-alt" placeholder="Description"></textarea>
+                        </div>
+    
+                        <div class="form__row form_image">
+                            <label for="imageInput" class="form__label"><i class="fas fa-image"></i> <span
+                                    class="validate-image"><i class="fas fa-check"></i> </span></label>
+                            <input type="file" id="imageInput" class="form_input--image imageInput" accept="image/*"
+                                onchange="loadImageUrl(event)" />
+                            <span id="image-file-name" class="file-name"></span>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="submit-btn"><i class="fas fa-check"></i> Validez</button>
+
+                    <div class="importButtons">
+                        <p>ou</p>
+                        <div class="form__row">
+                            <label for="fileInput" class="form__label importJson"><i class="fas fa-file-upload"></i> <span
+                                    class="validate-json"><i class="fas fa-check"></i> </span>Importer un fichier
+                                Json</label>
+                            <input type="file" id="fileInput" class="form_input--image" accept=".json"
+                                onchange="loadJsonFile(event)" />
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Container pour les sites touristiques rendus -->
+    <!-- map section -->
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-bar" placeholder="Rechercher un site..." />
+        <button id="search-btn" class="search-btn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+    <div id="map" class="map">
+        
+    </div>
+    <!-- Nouvelle section contenant la carte et la popup -->
+
+
+</body>
+
+</html>
